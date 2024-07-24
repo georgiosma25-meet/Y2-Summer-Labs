@@ -1,40 +1,16 @@
-from flask import Flask
- 
-app = Flask(__name__)
+from flask import Flask, render_template
 
+app = Flask(__name__)
 
 @app.route('/home')
 def home():
-    return ("<html><p>home</p></html>")
-
+    return render_template('home.html')
 
 @app.route('/page1')
 def page1():
-    return ("<html><p>page1</p></html>")
+    return render_template('page1.html')
 
-
-@app.route('/signup')
-def signup():
-    return ("<html><p>signup</p></html>")
-
-
-@app.route('/signin')
-def signin():
-    return ("<html><p>signin</p></html>")
-
-
-
-@app.route('/quote')
-def quote():
-    return ("<html><p>quote</p></html>")
-
-
-
-
-
-
-
-
+# Define other routes similarly
 
 if __name__ == '__main__':
-    app.run(debug = True, port = 2007)
+    app.run(debug=True, port=4000)
