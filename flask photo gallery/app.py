@@ -1,6 +1,6 @@
 from flask import Flask
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 @app.route('/home')
 def home():
@@ -19,7 +19,7 @@ def home():
         </body> </html>''')
 
 @app.route('/food1')
-def food1():
+def food1(): 
     return('''<html> <body>
         <h1> Welcome to the first food photo! </h1>
             <img src="https://media-cdn.tripadvisor.com/media/photo-s/17/9b/5e/5c/soshi-rolls.jpg">
@@ -39,8 +39,7 @@ def food2():
         </body> </html>''')
 
 @app.route('food3')
-def function():
-     pass food():
+def food3():
     return('''<html> <body>
         <h1> Welcome to the third food photo! </h1>
         <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjsO76hL4tNLp6ZN_j2m-CyGSpXmf88nzO0Q&s">
