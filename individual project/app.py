@@ -14,9 +14,10 @@ config = {
   "appId": "1:368517790138:web:10ac7894d50ef6542ec583",
   "databaseURL": "https://quotef1-default-rtdb.asia-southeast1.firebasedatabase.app/"
 }
+
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
-
+db =firebase.database()
 
 
 @app.route('/')
@@ -53,16 +54,25 @@ def signin():
        password = request.form['password']
        try:
             login_session['user'] = auth.sign_in_with_email_and_password(email, password)
-            return redirect(url_for('home'))
+            return redirect(url_for('page1'))
        except:
            error = "Authentication failed"
-   return render_template("page1.html")
+   return render_template("signin.html")
 
 
 
 @app.route('/quote')
 def quote():
     return render_template('quote.html')
+
+
+
+
+
+@app.route('/submit_quote', methods=['POST'])
+def submit_quote():
+    quote = request.form['quote']
+
 
 
 
