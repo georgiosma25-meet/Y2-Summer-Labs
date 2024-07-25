@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request , redirect , url_for
 from flask import session as login_session
 app = Flask(__name__)
 import pyrebase
@@ -61,20 +61,28 @@ def signin():
 
 
 
-@app.route('/quote')
+@app.route('/quote' , methods=['GET' , 'POST'])
 def quote():
+    if request.method=="POST":
+        quote = request.form["quote"]
+        db.child("user_quotes").push({"quote":quote})
+        return redirect(url_for('page1'))
     return render_template('quote.html')
+ 
 
 
 
-
-
-@app.route('/submit_quote', methods=['POST'])
-def submit_quote():
-    quote = request.form['quote']
+# @app.route('/submit_quote', methods=['POST'])
+# def submit_quote():
+#     quote = request.form['quote']
 
 
 
 
 if __name__ == '__main__':
     app.run(debug=True, port=2007)
+
+
+
+
+
