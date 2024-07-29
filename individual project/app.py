@@ -55,8 +55,8 @@ def signin():
        try:
             login_session['user'] = auth.sign_in_with_email_and_password(email, password)
             return redirect(url_for('page1'))
-       except:
-           error = "Authentication failed"
+       except Exception as e:
+           print(e)
    return render_template("signin.html")
 
 
@@ -80,7 +80,7 @@ def quote():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=2007)
+    app.run(debug=True, port=2008)
 
 
 
